@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raise a Complaint</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 35px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        h2 {
+            font-weight: 600;
+            color: #222;
+            margin-bottom: 25px;
+        }
+
+        .form-control,
+        .form-select {
+            height: 46px;
+            background: #fff;
+            border: 1px solid #dcdfe4;
+            color: #333;
+            border-radius: 10px;
+            padding: 10px 12px;
+        }
+
+        textarea.form-control {
+            min-height: 130px;
+        }
+
+        .form-control::placeholder {
+            color: #999;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #ff002f;
+            box-shadow: 0 0 0 2px rgba(255,0,47,0.15);
+        }
+
+        .form-select:hover {
+            border-color: #ff002f;
+        }
+
+        .row-gap {
+            margin-bottom: 18px;
+        }
+
+        .upload-box {
+            background: #fafafa;
+            border: 1px dashed #d1d5db;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            color: #666;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .upload-box:hover {
+            border-color: #ff002f;
+            background: #fff5f7;
+            color: #000;
+        }
+
+        .preview video {
+            width: 100%;
+            margin-top: 12px;
+            border-radius: 10px;
+        }
+
+        input[type="file"] {
+            background: transparent;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff002f, #cc001f);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ff1a45, #a8001a);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(255,0,47,0.2);
+        }
+
+        select:disabled {
+            opacity: 0.6;
+            background: #f3f4f6;
+            cursor: not-allowed;
+        }
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 30px;
+        }
+
+        .header img {
+            height: 85px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+<!-- HEADER -->
+<div class="header">
+    <img src="https://nayapuranaonline.com/storage/settings/20250126193747.webp" alt="Naya Purana Logo">
+</div>
+
+<div class="container mt-5">
+    <div class="card">
+        <h2>Raise a Complaint</h2>
+
+        <form>
+
+            <!-- BASIC -->
+            <div class="row row-gap">
+                 <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Order ID">
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Your Name">
+                </div>
+                <div class="col-md-4">
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
+            </div>
+
+            <!-- TYPE -->
+            <div class="row row-gap">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Phone">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" placeholder="Part Name / Number">
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select">
+                        <option>Product Issue</option>
+                        <option>Vendor Issue</option>
+                        <option>Order Issue</option>
+                        <option>Platform Issue</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- VEHICLE -->
+            <div class="row row-gap">
+                <div class="col-md-4">
+                    <select id="make" class="form-select">
+                        <option value="">Select Make</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="model" class="form-select" >
+                        <option value="">Select Model</option>
+                    </select>
+                </div>
+                <!-- <div class="col-md-4">
+                    <select id="variant" class="form-select" >
+                        <option value="">Select Variant</option>
+                    </select>
+                </div> -->
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div class="mb-3">
+                <textarea class="form-control" placeholder="Describe your issue"></textarea>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="mb-3">
+                <label class="mb-2">Product Photo showing problem</label>
+                <input type="file" class="form-control" accept="image/*">
+            </div>
+
+            <!-- VIDEO -->
+            <div class="mb-3">
+                <label class="mb-2">⁠Unboxing Video of the Product</label>
+
+                <div class="upload-box" onclick="document.getElementById('videoInput').click()">
+                    Click to upload video (MP4, WebM)
+                </div>
+
+                <input type="file" id="videoInput" accept="video/mp4,video/webm" hidden>
+
+                <div id="videoPreview" class="preview"></div>
+            </div>
+
+           <a href="complaint_submitted.html" class="btn btn-primary">
+                Submit Complaint
+            </a>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Video preview
+    const videoInput = document.getElementById("videoInput");
+    const preview = document.getElementById("videoPreview");
+
+    videoInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            preview.innerHTML = `
+                <video controls>
+                    <source src="${url}" type="${file.type}">
+                </video>
+            `;
+        }
+    });
+
+    // Vehicle data
+    const data = {
+        "Maruti": {"Swift": ["LXI","VXI"], "Baleno": ["Delta","Zeta"]},
+        "Hyundai": {"i20": ["Sportz","Asta"]},
+        "Tata": {"Nexon": ["XE","XM"], "Punch": ["Pure","Creative"]}
+    };
+
+    const make = document.getElementById("make");
+    const model = document.getElementById("model");
+    const variant = document.getElementById("variant");
+
+    // Fill make
+    Object.keys(data).forEach(m => {
+        make.innerHTML += `<option value="${m}">${m}</option>`;
+    });
+
+    // Make change
+    make.onchange = () => {
+        model.innerHTML = `<option value="">Select Model</option>`;
+        variant.innerHTML = `<option value="">Select Variant</option>`;
+        variant.disabled = true;
+
+        if (make.value) {
+            model.disabled = false;
+            Object.keys(data[make.value]).forEach(mo => {
+                model.innerHTML += `<option value="${mo}">${mo}</option>`;
+            });
+        } else {
+            model.disabled = true;
+        }
+    };
+
+    // Model change
+    model.onchange = () => {
+        variant.innerHTML = `<option value="">Select Variant</option>`;
+
+        if (model.value) {
+            variant.disabled = false;
+            data[make.value][model.value].forEach(v => {
+                variant.innerHTML += `<option value="${v}">${v}</option>`;
+            });
+        } else {
+            variant.disabled = true;
+        }
+    };
+</script>
+
+</body>
+</html>
